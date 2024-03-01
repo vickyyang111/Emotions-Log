@@ -1,7 +1,6 @@
 # Emotions-Log
 This is the final project for BCOG200 class by Vicky Yang.
 
-Project Description
 This project aims to create an emotionally intelligent chatbot that enhances user interactions by recognizing, capturing, and responding to users' emotions. Using natural language processing (NLP) and sentiment analysis, the chatbot will provide personalized interactions. It will also analyze emotional trends over time and provide users with insight into their emotional states through visual reports every seven days.
 
 Features include :
