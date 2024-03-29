@@ -30,6 +30,6 @@ Data Input Requirements
 
 Input Format: Text input should be in plain text format, ideally in English for accurate sentiment analysis.
 
-Data Structure: Emotional log entries should include:
-emotion: string (e.g., "happy", "sad", "angry")
-Timestamp: datetime in ISO 8601 format
+Emotional log entries should include:
+- emotion: string (e.g., "happy", "sad", "angry")
+- Timestamp: datetime in ISO 8601 format
