@@ -24,9 +24,12 @@ Returns: A visual report of emotional trends over the specified period.
 Example Use Cases:
 
 Understanding Emotional Patterns: Users can interact with Emotions-Log daily. The system will recognize emotions, provide supportive feedback, and log these interactions. Over time, users can request a report to see their emotional trends.
+
 Immediate Emotional Support: When feeling a strong emotion, a user can express this to Emotions-Log and receive an immediate empathetic response, tailored to their current state.
 Data Input Requirements
+
 Input Format: Text input should be in plain text format, ideally in English for accurate sentiment analysis.
+
 Data Structure: Emotional log entries should include:
 emotion: string (e.g., "happy", "sad", "angry")
 Timestamp: datetime in ISO 8601 format
