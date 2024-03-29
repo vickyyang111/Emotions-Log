@@ -1,0 +1,21 @@
+**Emotion Recognition and Logging**
+Procedure:
+Start the chatbot and input a variety of sentences that convey clear emotional content, for example: "I am very happy today!" 
+For each input, check if the chatbot correctly identifies the emotion and logs it with a timestamp.
+Expected Outcome:
+The chatbot should accurately identify the emotion (e.g., happiness, sadness) and log each input with the corresponding timestamp.
+
+**Emotion-Responsive Reply**
+Procedure:
+After providing emotional input, observe the chatbot’s response.
+Evaluate whether the response is appropriate and supportive for the identified emotion.
+Expected Outcome:
+The chatbot should provide empathetic and contextually relevant responses for various emotions.
+
+**Emotion Trend Analysis**
+Procedure:
+Interact with the chatbot consistently over a period (e.g., one week), ensuring to express a range of emotions.
+After the period, request an emotional trend analysis report from the chatbot.
+Review the report for accuracy and insights into emotional patterns.
+Expected Outcome:
+The chatbot should generate a visual and analytical report showing the user’s emotional trends, identifying any patterns or significant changes over the test period.
