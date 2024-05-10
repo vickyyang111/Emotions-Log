@@ -1,0 +1,52 @@
+# emotion_analyzer.py
+
+from textblob import TextBlob
+
+class EmotionRecognizer:
+    def analyze_emotion(self, text):
+        blob = TextBlob(text)
+        sentiment = blob.sentiment.polarity
+        if sentiment > 0.5:
+            return "happy"
+        elif sentiment < -0.5:
+            return "sad"
+        else:
+            return "neutral"
+
+class EmotionLogger:
+    def __init__(self, log_file_path):
+        self.log_file_path = log_file_path
+
+    def log_emotion(self, emotion, timestamp):
+        with open(self.log_file_path, 'a') as log_file:
+            log_file.write(f"{timestamp.isoformat()} - {emotion}\n")
+
+    def get_emotions(self):
+        with open(self.log_file_path, 'r') as log_file:
+            emotions = [line.split(' - ')[1].strip() for line in log_file.readlines()]
+        return emotions
+
+class ChatbotResponseGenerator:
+    def __init__(self, response_rules):
+        self.response_rules = response_rules
+
+    def generate_response(self, emotion):
+        return self.response_rules.get(emotion, "I'm not sure how to respond to that.")
+
+class EmotionTrendAnalyzer:
+    def __init__(self, log_file_path):
+        self.log_file_path = log_file_path
+
+    def analyze_trends(self, emotions):
+        emotion_counts = {emotion: emotions.count(emotion) for emotion in set(emotions)}
+        return emotion_counts
+
+    def plot_trend(self, emotion_counts):
+        emotions = list(emotion_counts.keys())
+        counts = list(emotion_counts.values())
+
+        plt.bar(emotions, counts)
+        plt.xlabel('Emotion')
+        plt.ylabel('Count')
+        plt.title('Emotion Trend in the Past Week')
+        plt.show()
