@@ -1,0 +1,27 @@
+import datetime
+import os
+import pytest
+from emotion_module import EmotionRecognizer, EmotionLogger, ChatbotResponseGenerator
+
+def test_emotion_recognizer():
+    recognizer = EmotionRecognizer()
+    assert recognizer.analyze_emotion("I am very happy today!") == "happy"
+    assert recognizer.analyze_emotion("I am very sad today!") == "sad"
+    assert recognizer.analyze_emotion("I am okay.") == "neutral"
+
+def test_emotion_logger(tmpdir):
+    logger = EmotionLogger(os.path.join(tmpdir, "test_log.txt"))
+    logger.log_emotion("happy", datetime.datetime.now())
+    emotions = logger.get_emotions()
+    assert len(emotions) == 1
+    assert emotions[0] == "happy"
+
+def test_chatbot_response_generator():
+    responder = ChatbotResponseGenerator({"happy": "Great to see you happy!", "sad": "Sorry to hear that. Hope you feel better soon.", "neutral": "I understand."})
+    assert responder.generate_response("happy") == "Great to see you happy!"
+    assert responder.generate_response("sad") == "Sorry to hear that. Hope you feel better soon."
+    assert responder.generate_response("neutral") == "I understand."
+    assert responder.generate_response("angry") == "I'm not sure how to respond to that."
+
+if __name__ == "__main__":
+    pytest.main()
