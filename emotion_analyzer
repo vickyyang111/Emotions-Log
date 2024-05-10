@@ -1,6 +1,8 @@
-# emotion_analyzer.py
-
+import datetime
+import matplotlib.pyplot as plt
 from textblob import TextBlob
+import tkinter as tk
+from tkinter import messagebox
 
 class EmotionRecognizer:
     def analyze_emotion(self, text):
@@ -50,3 +52,43 @@ class EmotionTrendAnalyzer:
         plt.ylabel('Count')
         plt.title('Emotion Trend in the Past Week')
         plt.show()
+
+class EmotionLogApp:
+    def __init__(self, recognizer, logger, responder, analyzer):
+        self.recognizer = recognizer
+        self.logger = logger
+        self.responder = responder
+        self.analyzer = analyzer
+        self.create_gui()
+
+    def create_gui(self):
+        self.root = tk.Tk()
+        self.root.title("Emotion Log")
+
+        label = tk.Label(self.root, text="How are you feeling today?")
+        label.pack()
+
+        self.entry = tk.Entry(self.root, width=50)
+        self.entry.pack()
+
+        button = tk.Button(self.root, text="Log Emotion", command=self.log_emotion)
+        button.pack()
+
+        self.root.mainloop()
+
+    def log_emotion(self):
+        user_input = self.entry.get()
+        if not user_input:
+            messagebox.showerror("Error", "Please enter your emotion.")
+            return
+
+        identified_emotion = self.recognizer.analyze_emotion(user_input)
+        self.logger.log_emotion(identified_emotion, datetime.datetime.now())
+        response = self.responder.generate_response(identified_emotion)
+        messagebox.showinfo("Response", response)
+
+        emotions = self.logger.get_emotions()
+        emotion_counts = self.analyzer.analyze_trends(emotions)
+
+        if len(emotions) % 7 == 0:
+            self.analyzer.plot_trend(emotion_counts)
